@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 
 @RestController
 public class DessertController {
@@ -27,6 +29,12 @@ public class DessertController {
                     HttpStatus.NOT_FOUND, "Dessert Not Found", e
             );
         }
+    }
+
+    @GetMapping(value = "/allDesserts")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Dessert> getDesserts() {
+        return this.dessertService.getAllDessert();
     }
 
     @PostMapping(value = "/desserts")

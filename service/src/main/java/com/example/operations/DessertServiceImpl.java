@@ -8,6 +8,8 @@ import com.mongodb.MongoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Implement CRUD operations defined in the DessertService
  */
@@ -26,6 +28,15 @@ public class DessertServiceImpl implements DessertService{
                         return dessertRepository.findById(id).get();
                 } else {
                         throw new MongoException("Record Not Found");
+                }
+        }
+
+        @Override
+        public List<Dessert> getAllDessert() {
+                if (dessertRepository.findAll().size() != 0) {
+                        return dessertRepository.findAll();
+                } else {
+                        throw new MongoException("Empty");
                 }
         }
 
