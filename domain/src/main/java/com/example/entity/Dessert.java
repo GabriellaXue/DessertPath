@@ -23,7 +23,6 @@ public class Dessert {
     private String steps;
     private LocalDateTime createdAt;
     private LocalDateTime editedAt;
-//    private boolean published;
 
     protected Dessert(){}
 

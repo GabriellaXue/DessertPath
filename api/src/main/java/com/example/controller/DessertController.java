@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
@@ -19,7 +20,13 @@ public class DessertController {
     @GetMapping(value = "/desserts/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Dessert> getDessert(@PathVariable(value = "id") Long id) {
-        return new ResponseEntity<>(dessertService.getDessertRxById(String.valueOf(id)), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(dessertService.getDessertRxById(String.valueOf(id)), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Dessert Not Found", e
+            );
+        }
     }
 
     @PostMapping(value = "/desserts")
