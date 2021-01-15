@@ -62,7 +62,7 @@ public class OperationsUt {
                 "Pipe your filling onto the back of half the shells. Form a sandwich and enjoy!";
 
     @Test
-    public void testCRUD() {
+    public void testRead() {
         DessertCreationDTO dessertCreationDTO = new DessertCreationDTO();
         dessertCreationDTO.setName(name);
         dessertCreationDTO.setDescription(description);
